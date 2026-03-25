@@ -1,24 +1,80 @@
-# Socks Advertisement
+# gsap-product-landing
 
-My first FULL-FLEDGED Web design... I hope you guys like it!
+> Animated product landing page — a GSAP timeline orchestrates staggered entrance sequences for navbar, headline, and hero image using Expo and power2 easing curves.
 
-##Description
+---
 
-Step up your sock game with our new project website! The site is designed to combine the latest GSAP basics technology and sock fashion trends, making it anything but boring. With vibrant animations and an easy-to-use interface, our website is here to help you find the perfect socks to complete your fashion statement.
+## What this demonstrates
 
-Our coder has worked tirelessly to create a unique and dynamic user experience, ensuring that your shopping experience is both fun and efficient. We know that sock shopping can sometimes feel like a chore, so we’ve made it our mission to make it an enjoyable experience for you.
+A focused exercise in GSAP timeline choreography — three entrance animations sequenced so each element arrives at the right moment, with easing curves chosen to match the intended feel of each element.
 
-The site features a wide range of styles, from bold and colorful socks to classic and understated designs. Our collection has been curated to cater to all tastes and preferences. And the best part? Our site is incredibly user-friendly, making it easy to find what you're looking for.
+The navbar slides in from above with `Expo.easeInOut` (fast start, ultra-smooth stop — authoritative). The headline drives in from the left with `Expo.easeIn` (builds momentum — dramatic). The hero image rises from below with `power2.out` (decelerates gently — natural). Each curve is deliberate, not random.
 
-So, what are you waiting for? Get ready to step up your sock game and start browsing our collection today. With our innovative website and commitment to quality, you can rest assured that you’ll find the perfect pair of socks to suit your style.
+---
 
-##Result
->https://socks-frontend.netlify.app/
+## Timeline breakdown
 
-## 🛠 Skills
-Javascript, HTML, CSS...
+```js
+var tl = gsap.timeline()
 
-## 🔗 Links
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abhijeet-verma-the-dragon-sin-of-wrath/)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/lucife_r1)
+tl.from("#nav",      { y: "-40%", duration: 1, opacity: 0, ease: "Expo.easeInOut" })
+  .from("#main h1",  { x: "-40%", duration: 2, opacity: 0, ease: "Expo.easeIn" })
+  .from("#boi",      { y:  "40%", duration: 2, opacity: 0, ease: "power2.out" })
+```
 
+The timeline runs sequentially — each `.from()` call starts after the previous one completes. GSAP timelines are the foundation of every complex multi-element animation on the web; this is where that understanding starts.
+
+---
+
+## Tech Stack
+
+| Tool | Purpose |
+|------|---------|
+| GSAP 3 | Timeline sequencing, easing control |
+| Vanilla JavaScript | Minimal, direct |
+| HTML + CSS | Layout and typography |
+| Gilroy OTF | Custom locally hosted font — ExtraBold + Light pairing |
+
+---
+
+## Getting Started
+
+No build step. Open directly or serve with any static server.
+
+```bash
+git clone https://github.com/YOUR_USERNAME/gsap-product-landing.git
+cd gsap-product-landing && open index.html
+
+# or with a local server
+npx serve .
+```
+
+---
+
+## Project Structure
+
+```
+gsap-product-landing/
+├── index.html
+├── Socks.css
+├── script.js        # GSAP timeline
+├── fonts/
+│   ├── Gilroy-ExtraBold.otf
+│   └── Gilroy-Light.otf
+└── IMAGES/
+    ├── emoji.png
+    ├── tedaladka.png
+    └── ondalonda.png
+```
+
+---
+
+## Deploy
+
+Drag the folder to [Netlify](https://netlify.com). No build command. Publish directory: `/`.
+
+---
+
+## License
+
+MIT
